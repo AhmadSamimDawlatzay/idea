@@ -19,3 +19,6 @@ Route::get('/', function () {
 });
 
 Route::get('/ideas', [IdeaController::class, 'index'])->name('ideas.index');
+Route::get('/idea/show/{idea}', [IdeaController::class, 'show'])->name('idea.show');
+//Route::Post('/idea/destroy/{idea}', [IdeaController::class, 'destroy'])->name('idea.destroy');
+Route::delete('/idea/delete/{idea}', [IdeaController::class, 'destroy'])->name('idea.destroy');

@@ -15,7 +15,19 @@ class IdeaController extends Controller
 			  $query->Where('status', $status);
 		  })
 		  ->get();
+		$statusCounts = Idea::statusCont();
 		return view('ideas',
-		  compact('ideas'));
+		  compact('ideas', 'statusCounts'));
+	}
+	
+	public function show(Idea $idea)
+	{
+		return view('idea-show', compact('idea'));
+	}
+	
+	public function destroy(Idea $idea)
+	{
+		$idea->delete();
+		return to_route('ideas.index');
 	}
 }
